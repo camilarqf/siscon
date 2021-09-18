@@ -1,4 +1,4 @@
-package br.com.siscon.model;
+package br.com.siscon.model.endereco;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,25 +7,23 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
+@Entity
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "estoque")
-public class EstoqueModel {
+@Table(name = "estado")
+public class EstadoModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private int estoque_min;
-
-    private int estoque_max;
-
     @NotNull
-    private int quantidade;
+    private String nome;
 
-    @OneToOne(mappedBy = "estoque_id")
-    private ProdutoModel produto_id;
+    @OneToMany(mappedBy = "estado_id")
+    private Set<CidadeModel> cidade_id;
+
 }

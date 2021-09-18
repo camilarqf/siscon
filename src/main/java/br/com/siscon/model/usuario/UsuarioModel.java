@@ -1,5 +1,6 @@
-package br.com.siscon.model;
+package br.com.siscon.model.usuario;
 
+import br.com.siscon.model.venda.VendaModel;
 import lombok.*;
 
 import javax.persistence.*;

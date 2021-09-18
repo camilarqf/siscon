@@ -1,5 +1,7 @@
-package br.com.siscon.model;
+package br.com.siscon.model.venda;
 
+import br.com.siscon.model.produto.ProdutoVendaModel;
+import br.com.siscon.model.usuario.UsuarioModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

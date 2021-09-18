@@ -1,4 +1,4 @@
-package br.com.siscon.model;
+package br.com.siscon.model.usuario;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

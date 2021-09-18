@@ -1,5 +1,8 @@
-package br.com.siscon.model;
+package br.com.siscon.model.produto;
 
+import br.com.siscon.model.categoria.CategoriaModel;
+import br.com.siscon.model.estoque.EstoqueModel;
+import br.com.siscon.model.laboratorio.LaboratorioModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

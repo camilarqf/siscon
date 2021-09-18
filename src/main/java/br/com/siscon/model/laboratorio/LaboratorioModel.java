@@ -1,5 +1,7 @@
-package br.com.siscon.model;
+package br.com.siscon.model.laboratorio;
 
+import br.com.siscon.model.endereco.BairroModel;
+import br.com.siscon.model.produto.ProdutoModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,9 +17,8 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "categoria")
-public class CategoriaModel {
-
+@Table(name = "laboratorio")
+public class LaboratorioModel {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -29,5 +30,9 @@ public class CategoriaModel {
     private Date data;
 
     private Date data_atualizacao;
+
+    @OneToMany(mappedBy="laboratorio_id")
+    private Set<ProdutoModel> produto_id;
+
 
 }

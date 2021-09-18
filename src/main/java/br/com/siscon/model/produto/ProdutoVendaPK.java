@@ -1,4 +1,4 @@
-package br.com.siscon.model;
+package br.com.siscon.model.produto;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
