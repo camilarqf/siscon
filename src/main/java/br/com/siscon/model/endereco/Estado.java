@@ -7,24 +7,23 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @Entity
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "endereco")
-public class EnderecoModel {
+@Table(name = "estado")
+public class Estado {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotNull
-    private int numero;
+    private String nome;
 
-    private String complemento;
+    @OneToMany(mappedBy = "estado_id")
+    private Set<Cidade> cidade_id;
 
-    @ManyToOne
-    @JoinColumn(name = "bairro_id", referencedColumnName = "id", nullable = false)
-    private BairroModel bairro_id;
 }

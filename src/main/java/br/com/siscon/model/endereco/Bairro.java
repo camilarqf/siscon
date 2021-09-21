@@ -1,4 +1,4 @@
-package br.com.siscon.model.categoria;
+package br.com.siscon.model.endereco;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -7,27 +7,27 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Date;
 import java.util.Set;
 
+@Entity
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity
-@Table(name = "categoria")
-public class CategoriaModel {
+@Table(name = "bairro")
+public class Bairro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotNull
-    @Column(unique = true)
     private String nome;
 
-    private Date data;
+    @OneToMany(mappedBy = "bairro_id")
+    private Set<Endereco> endereco_id;
 
-    private Date data_atualizacao;
-
+    @ManyToOne
+    @JoinColumn(name = "cidade_id", referencedColumnName = "id", nullable = false)
+    private Cidade cidade_id;
 }

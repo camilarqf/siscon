@@ -1,6 +1,6 @@
 package br.com.siscon.model.usuario;
 
-import br.com.siscon.model.venda.VendaModel;
+import br.com.siscon.model.venda.Venda;
 import lombok.*;
 
 import javax.persistence.*;
@@ -15,7 +15,7 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class UsuarioModel {
+public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -36,12 +36,12 @@ public class UsuarioModel {
 
     private Date data_atualizacao;
 
-    @ElementCollection(targetClass = UsuarioRoleModel.class)
+    @ElementCollection(targetClass = Role.class)
     @Enumerated(EnumType.ORDINAL)
     @CollectionTable(name = "usuario_role", joinColumns = @JoinColumn(name = "usuario_id"))
     @Column(name = "role", nullable=false)
-    private Set<UsuarioRoleModel> role = new HashSet<>();
+    private Set<Role> role = new HashSet<>();
 
     @OneToMany(mappedBy = "usuario_id")
-    private Set<VendaModel> venda_id;
+    private Set<Venda> venda_id;
 }

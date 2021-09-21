@@ -1,6 +1,5 @@
 package br.com.siscon.model.endereco;
 
-import br.com.siscon.model.laboratorio.LaboratorioModel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,27 +7,24 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
-import java.util.Set;
 
 @Entity
 @Setter
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "bairro")
-public class BairroModel {
-
+@Table(name = "endereco")
+public class Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
     @NotNull
-    private String nome;
+    private int numero;
 
-    @OneToMany(mappedBy = "bairro_id")
-    private Set<EnderecoModel> endereco_id;
+    private String complemento;
 
     @ManyToOne
-    @JoinColumn(name = "cidade_id", referencedColumnName = "id", nullable = false)
-    private CidadeModel cidade_id;
+    @JoinColumn(name = "bairro_id", referencedColumnName = "id", nullable = false)
+    private Bairro bairro_id;
 }

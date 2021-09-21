@@ -14,8 +14,8 @@ import java.util.Set;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name = "estado")
-public class EstadoModel {
+@Table(name = "cidade")
+public class Cidade {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -23,7 +23,11 @@ public class EstadoModel {
     @NotNull
     private String nome;
 
-    @OneToMany(mappedBy = "estado_id")
-    private Set<CidadeModel> cidade_id;
+    @OneToMany(mappedBy = "cidade_id")
+    private Set<Bairro> bairro_id;
+
+    @ManyToOne
+    @JoinColumn(name = "estado_id", referencedColumnName = "id", nullable = false)
+    private Estado estado_id;
 
 }

@@ -1,8 +1,8 @@
 package br.com.siscon.model.produto;
 
-import br.com.siscon.model.categoria.CategoriaModel;
-import br.com.siscon.model.estoque.EstoqueModel;
-import br.com.siscon.model.laboratorio.LaboratorioModel;
+import br.com.siscon.model.categoria.Categoria;
+import br.com.siscon.model.estoque.Estoque;
+import br.com.siscon.model.laboratorio.Laboratorio;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,7 +19,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "produto")
-public class ProdutoModel {
+public class Produto {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -49,18 +49,18 @@ public class ProdutoModel {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "estoque_id", referencedColumnName = "id", nullable = false)
-    private EstoqueModel estoque_id;
+    private Estoque estoque_id;
 
     @ManyToOne
     @JoinColumn(name = "laboratorio_id", referencedColumnName = "id", nullable = false)
-    private LaboratorioModel laboratorio_id;
+    private Laboratorio laboratorio_id;
 
     @ManyToMany
     @JoinTable(name = "produto_categoria", joinColumns = @JoinColumn(name="produto_id")
             ,inverseJoinColumns = @JoinColumn(name = "categoria_id"))
-    private Set<CategoriaModel> categoria_id;
+    private Set<Categoria> categoria_id;
 
     @OneToMany(mappedBy = "produto_id")
-    private Set<ProdutoVendaModel> venda_id;
+    private Set<ProdutoVenda> venda_id;
 
 }

@@ -1,6 +1,6 @@
 package br.com.siscon.model.produto;
 
-import br.com.siscon.model.venda.VendaModel;
+import br.com.siscon.model.venda.Venda;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,17 +17,17 @@ import java.util.Date;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class ProdutoVendaModel {
+public class ProdutoVenda {
 
     @Id
     @ManyToOne
     @JoinColumn(name = "produto_id", referencedColumnName = "id", nullable = false)
-    private ProdutoModel produto_id;
+    private Produto produto_id;
 
     @Id
     @ManyToOne
     @JoinColumn(name = "venda_id", referencedColumnName = "id", nullable = false)
-    private VendaModel venda_id;
+    private Venda venda_id;
 
     @NotNull
     private int quantidade;

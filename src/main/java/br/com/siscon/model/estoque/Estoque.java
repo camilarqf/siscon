@@ -1,6 +1,6 @@
 package br.com.siscon.model.estoque;
 
-import br.com.siscon.model.produto.ProdutoModel;
+import br.com.siscon.model.produto.Produto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -15,7 +15,7 @@ import javax.validation.constraints.NotNull;
 @NoArgsConstructor
 @Entity
 @Table(name = "estoque")
-public class EstoqueModel {
+public class Estoque {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -28,5 +28,5 @@ public class EstoqueModel {
     private int quantidade;
 
     @OneToOne(mappedBy = "estoque_id")
-    private ProdutoModel produto_id;
+    private Produto produto_id;
 }

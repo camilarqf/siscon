@@ -1,7 +1,7 @@
 package br.com.siscon.model.venda;
 
-import br.com.siscon.model.produto.ProdutoVendaModel;
-import br.com.siscon.model.usuario.UsuarioModel;
+import br.com.siscon.model.produto.ProdutoVenda;
+import br.com.siscon.model.usuario.Usuario;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -18,7 +18,7 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity
 @Table(name = "venda")
-public class VendaModel {
+public class Venda {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -33,10 +33,10 @@ public class VendaModel {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", nullable = false)
-    private UsuarioModel usuario_id;
+    private Usuario usuario_id;
 
     @OneToMany(mappedBy = "venda_id")
-    private Set<ProdutoVendaModel> produto_id;
+    private Set<ProdutoVenda> produto_id;
 
     @NotNull
     private int quantidade;

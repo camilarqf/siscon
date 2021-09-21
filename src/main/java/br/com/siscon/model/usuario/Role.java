@@ -10,7 +10,7 @@ import javax.persistence.Entity;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public enum UsuarioRoleModel {
+public enum Role {
     ROLE_ADMIN("ROLE_ADMIN"),
     ROLE_MODERADOR("ROLE_MODERADOR"),
     ROLE_CAIXA("ROLE_CAIXA");
