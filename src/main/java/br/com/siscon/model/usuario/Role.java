@@ -13,7 +13,8 @@ import javax.persistence.Entity;
 public enum Role {
     ROLE_ADMIN("ROLE_ADMIN"),
     ROLE_MODERADOR("ROLE_MODERADOR"),
-    ROLE_CAIXA("ROLE_CAIXA");
+    ROLE_CAIXA("ROLE_CAIXA"),
+    ROLE_USUARIO("ROLE_USUARIO");
 
     private String role;
 }

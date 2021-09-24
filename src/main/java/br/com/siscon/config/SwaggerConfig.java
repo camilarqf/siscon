@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.List;
 
 @Configuration
+@EnableSwagger2
 public class SwaggerConfig {
     private ApiInfo apiInfo(){
         return new ApiInfo(
