@@ -1,6 +1,8 @@
 package br.com.siscon.model.usuario;
 
 import br.com.siscon.model.venda.Venda;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
@@ -32,6 +34,7 @@ public class Usuario {
     private String matricula;
 
     @NotNull
+    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String senha;
 
     private Date data;
@@ -45,7 +48,7 @@ public class Usuario {
     private Set<Role> role = new HashSet<>();
 
     @OneToMany(mappedBy = "usuario_id")
-    private Set<Venda> venda_id;
+    private Set<Venda> vendas;
 
     public Usuario(String usuario, String matricula, String senha, Date data) {
         this.usuario = usuario;

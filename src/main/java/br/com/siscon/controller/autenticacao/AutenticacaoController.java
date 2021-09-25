@@ -1,4 +1,4 @@
-package br.com.siscon.controller;
+package br.com.siscon.controller.autenticacao;
 
 import br.com.siscon.model.usuario.Role;
 import br.com.siscon.model.usuario.Usuario;

@@ -35,9 +35,6 @@ public class Venda {
     @JoinColumn(name = "usuario_id", referencedColumnName = "id", nullable = false)
     private Usuario usuario_id;
 
-    @OneToMany(mappedBy = "venda_id")
-    private Set<ProdutoVenda> produto_id;
-
     @NotNull
     private int quantidade;
 
