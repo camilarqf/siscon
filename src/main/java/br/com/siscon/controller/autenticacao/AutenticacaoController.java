@@ -9,6 +9,8 @@ import br.com.siscon.payload.response.MessageResponse;
 import br.com.siscon.repository.UsuarioRepository;
 import br.com.siscon.security.jwt.JwtUtils;
 import br.com.siscon.security.service.UserDetailsImpl;
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -29,6 +31,7 @@ import java.util.stream.Collectors;
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
 @RequestMapping("/api/auth")
+@Api(tags = "API de autenticação")
 public class AutenticacaoController {
 
     @Autowired
@@ -43,6 +46,7 @@ public class AutenticacaoController {
     @Autowired
     private JwtUtils jwtUtils;
 
+    @ApiOperation(value = "Autenticar no sistema")
     @PostMapping("/signin")
     public ResponseEntity<?> autenticacaoUsuario(@Valid @RequestBody LoginRequest loginRequest){
         Authentication authentication = authenticationManager.authenticate(
@@ -63,6 +67,7 @@ public class AutenticacaoController {
                 roles));
     }
 
+    @ApiOperation(value = "Cadastrar no sistema")
     @PostMapping("/signup")
     public ResponseEntity<?>regitrarUsuario(@Valid @RequestBody SignupRequest signupRequest){
         if(usuarioRepository.existsByUsuario(signupRequest.getUsuario())){
