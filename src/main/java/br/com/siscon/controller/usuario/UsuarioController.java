@@ -31,8 +31,16 @@ public class UsuarioController {
     @GetMapping
     @ApiOperation(value = "Listar usuários")
     @PreAuthorize("hasRole('ADMIN') or hasRole('MODERADOR')")
-    public List<Usuario> buscarUsuarios(){
-        return usuarioRepository.findAll();
+    public ResponseEntity<List<Usuario>> buscarUsuarios(){
+        try{
+            List<Usuario> usuarios = usuarioRepository.findAll();
+            if(usuarios != null){
+                return new ResponseEntity<>(usuarios, HttpStatus.OK);
+            }
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }catch (Exception e){
+            return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @GetMapping("/{id}")

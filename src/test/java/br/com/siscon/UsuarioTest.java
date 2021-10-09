@@ -89,4 +89,10 @@ public class UsuarioTest {
 
         verify(mockRepository, times(1)).findById(1L);
     }
+
+    @Test
+    public void buscar_id_404() throws Exception {
+        mockMvc.perform(get(BASE_URL + "/2")).andExpect(status().isNotFound());
+    }
+
 }

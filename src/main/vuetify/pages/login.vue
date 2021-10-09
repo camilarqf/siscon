@@ -15,7 +15,7 @@
               >
                 <v-list-item three-line class="justify-center">
                   <v-text-field
-                    v-model="usuario"
+                    v-model="usuario.usuario"
                     prepend-icon="mdi-account"
                     :error-messages="errors"
                     placeholder="Usuário"
@@ -31,9 +31,10 @@
               >
                 <v-list-item three-line class="justify-center">
                   <v-text-field
-                    v-model="senha"
+                    v-model="usuario.senha"
                     prepend-icon="mdi-lock"
                     placeholder="Senha"
+                    required
                     :error-messages="errors"
                   >
                   </v-text-field>
@@ -65,6 +66,7 @@
 <script>
 import { required } from "vee-validate/dist/rules";
 import { extend, ValidationObserver, ValidationProvider } from "vee-validate";
+import Usuario from "../src/models/usuario";
 
 extend("required", {
   ...required,
@@ -79,13 +81,25 @@ export default {
   },
   data() {
     return {
-      usuario: ""
+      usuario: new Usuario("", "", "")
     };
   },
 
   methods: {
     submit() {
-      this.$refs.observer.validate();
+      if (this.$refs.observer.validate()) {
+        this.$axios
+          .post("/api/auth/signin", this.usuario)
+          .then(response => {
+            this.$auth.setUser(response.data);
+           
+            console.log(this.$auth);
+            this.$router.push("/");
+          })
+          .catch(error => {
+            console.log(error);
+          });
+      }
     }
   }
 };
